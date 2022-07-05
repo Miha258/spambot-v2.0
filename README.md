@@ -5,6 +5,12 @@ ____
 Spams text messages anywhere.
 
 ____
-## dependensies
+## run
+
+To run this script.Write __python main.py__.Or open this file
+
+____
+## dependencies
+
 It using tkinter and pyautogui
 > pip install autogui
