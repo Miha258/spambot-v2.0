@@ -7,7 +7,7 @@ Spams text messages anywhere.
 ____
 ## run
 
-To run this script.Write __python main.py__.Or open this file
+To run this script.Write __python main.py__ or open this file
 
 ____
 ## dependencies
