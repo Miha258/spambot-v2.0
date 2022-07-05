@@ -2,7 +2,7 @@
 ____
 ## description
 
-Spam text messages anywhere.
+Spams text messages anywhere.
 
 ____
 ## dependensies
