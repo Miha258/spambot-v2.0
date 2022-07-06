@@ -7,17 +7,6 @@ from time import sleep
 from tkinter import messagebox
 
 
-class SpamBotMessageBoxes:
-    def spam_started(self):
-        messagebox.showinfo(title='Info',message='Spam procces started')
-    
-    def thread_error(self):
-        messagebox.showerror(title='Error',message='Spam procces now is running!Please stop it to use start')
-
-    def spam_stopped(self):
-        messagebox.showinfo(title='Info',message='Spam procces stoped')
-
-
 class SpamBot:
     def __init__(self):
         self.window = tk.Tk()
@@ -25,7 +14,8 @@ class SpamBot:
         self.window.config(background='#5ecc7b', height=400, width=500)
         self.__is_spamming = True
         self.__create_widgets()
-        self.__message_boxes = SpamBotMessageBoxes()
+        self.__total_sended = 0
+
 
     def __create_widgets(self):
         self.__spam_entry = Entry()
@@ -35,6 +25,7 @@ class SpamBot:
         stop_spam_button = Button(text="STOP", command=self.__stop_spam)
         stop_spam_button.place(relx=0.5, rely=0.75, anchor=CENTER)
 
+
     def __spam(self, text: str):
         self.__is_spamming = True
         sleep(5)
@@ -42,20 +33,28 @@ class SpamBot:
             sleep(0.5)
             pyautogui.write(text)
             pyautogui.press('enter')
-            
+            self.__total_sended += 1
+    
+
+    def __kill_spam_procces(self):
+        self.__is_spamming = False
+        sleep(2)
+        messagebox.showinfo(title='Info',message=f'Spam procces stoped.Total sended: {self.__total_sended}')
+
+
     def __start_spam(self):
         if threading.active_count() == 2:
-            self.__message_boxes.thread_error()
+            messagebox.showerror(title='Error',message='Spam procces now is running!Please stop it to use start')
         else:
-            self.__message_boxes.spam_started()
+            messagebox.showinfo(title='Info',message=f'Spam procces will start in 5 seconds!')
             thread = Thread(target = lambda: self.__spam(self.__spam_entry.get()),name="spamming_thread")
             thread.start()
 
+
     def __stop_spam(self):
-        self.__is_spamming = False
-        self.__message_boxes.spam_stopped()
-
-
+        thread = Thread(target=self.__kill_spam_procces)
+        thread.start()
+        
 
 if __name__ == "__main__":
     spam_bot = SpamBot()
