@@ -39,7 +39,7 @@ class SpamBot:
     def __kill_spam_procces(self):
         self.__is_spamming = False
         sleep(2)
-        messagebox.showinfo(title='Info',message=f'Spam procces stoped.Total sended: {self.__total_sended}')
+        messagebox.showinfo(title='Info',message=f'Spam procces stoped.Total sended: {self.__total_sended} messages')
 
 
     def __start_spam(self):
