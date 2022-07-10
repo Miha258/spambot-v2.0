@@ -18,7 +18,7 @@ class SpamBot:
         self.__create_widgets()
         self.__total_sended = 0
     
-
+    
     def __create_widgets(self):
         self.__spam_entry = Entry()
         self.__spam_entry.place(relx=0.5, rely=0.5, anchor=CENTER, width=300, height=30)
