@@ -7,8 +7,6 @@ from time import sleep
 from tkinter import messagebox
 
 
-class DeleteWindowError(Exception): pass
-
 
 class SpamBot:
     def __init__(self):
