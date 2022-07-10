@@ -55,9 +55,9 @@ class SpamBot:
     def __stop_spam(self):
         if threading.active_count() == 1:
             messagebox.showerror(title='Error',message='Spam procces was not started')
-            return 
-        thread = Thread(target=self.__kill_spam_procces)
-        thread.start()
+        else: 
+            thread = Thread(target=self.__kill_spam_procces)
+            thread.start()
         
 
 
