@@ -6,13 +6,16 @@ from threading import Thread
 from time import sleep
 from tkinter import messagebox
 
+
 class DeleteWindowError(Exception): pass
+
 
 class SpamBot:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("(̿▀̿ ̿Ĺ̯̿̿▀̿ ̿) ̄ Spam bot ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿ ༽")
         self.window.config(background='#5ecc7b', height=400, width=500)
+        self.window.resizable(False, False)
         self.__is_spamming = True
         self.__create_widgets()
         self.__total_sended = 0
@@ -58,7 +61,6 @@ class SpamBot:
         else: 
             thread = Thread(target=self.__kill_spam_procces)
             thread.start()
-        
 
 
 if __name__ == "__main__":
